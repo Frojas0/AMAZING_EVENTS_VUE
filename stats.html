@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/images/Icon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <title>Amazing Events | Stats</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-black">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./index.html"><img style="width: 10rem;"
+                        src="./assets/images/Logo Amazing Events.png" alt="logo"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="./index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./upcomingEvents.html">Upcoming Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pastEvents.html">Past Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Stats</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main id="vueApp" class="d-flex justify-content-center align-items-center">
+        <div class="d-flex flex-column" style="margin-top: 1rem; margin-bottom: 1rem;">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="3">Event Statistics</th>
+                    </tr>
+                    <tr>
+                        <th class="col-4">Event with the highest percentage of attendance</th>
+                        <th class="col-4">Event with the lowest percentage of attendance</th>
+                        <th>Event with large capacity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td v-for="event of table1">{{event.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-bordered border-white">
+                <thead>
+                    <tr>
+                        <th colspan="3">Upcoming events statistics by category</th>
+                    </tr>
+                    <tr>
+                        <th class="col-4">Categories</th>
+                        <th class="col-4">Revenues</th>
+                        <th>Percentage of attendance</th>
+                    </tr>
+                </thead>
+                <tbody v-for="event of table2">
+                    <tr>
+                        <td>{{event.name}}</td>
+                        <td>$ {{event.revenue}}</td>
+                        <td>{{event.assistance}}%</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <table class="table table-bordered border-white">
+                <thead>
+                    <tr>
+                        <th colspan="3">Past events statistics by category</th>
+                    </tr>
+                    <tr>
+                        <th class="col-4">Categories</th>
+                        <th class="col-4">Revenues</th>
+                        <th>Percentage of attendance</th>
+                    </tr>
+                </thead>
+                <tbody v-for="event of table3">
+                    <tr>
+                        <td>{{event.name}}</td>
+                        <td>$ {{event.revenue}}</td>
+                        <td>{{event.assistance}}%</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer class="bg-black">
+        <div class="d-flex justify-content-around align-items-center text-align-center">
+            <nav class="navbar bg-black">
+                <div class="container-fluid bg-black">
+                    <a class="navbar-brand" style="color: white;" href="https://www.instagram.com/">
+                        <img src="./assets/images/logoIg.png" alt="logo" width="35" height="35"
+                            class="d-inline-block align-text-top">
+                        Instagram
+                    </a>
+                    <a class="navbar-brand" style="color: white;" href="https://www.facebook.com/">
+                        <img src="./assets/images/logoFb.png" alt="logoFb" width="30" height="30"
+                            class="d-inline-block align-text-top">
+                        Facebook
+                    </a>
+                    <a class="navbar-brand" style="color: white;" href="https://web.whatsapp.com/">
+                        <img src="./assets/images/logoWsp.png" alt="logoWsp" width="30" height="30"
+                            class="d-inline-block align-text-top">
+                        WhatsApp
+                    </a>
+                </div>
+            </nav>
+            <h4 style="margin: 0;">COHORT 44</h4>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="stats.js"></script>
+</body>
+
+</html>
