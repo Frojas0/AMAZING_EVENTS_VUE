@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Labels Style */
+h4 {
+    font-size: 2rem;
+    color: rgb(225, 18, 97);
+}
+
+main {
+    background-image: radial-gradient(circle at 55.96% -18.1%, #7151b0 0, #473885 25%, #1f1f59 50%, #00002f 75%, #00000b 100%);
+    min-height: 90vh;
+}
+
+footer {
+    color: white;
+}
+
+/* Class Style */
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    color: rgb(225, 18, 97);
+}
+
+.active {
+    border: solid 2px rgb(225, 18, 97);
+    border-radius: 0.5rem;
+    color: white !important;
+}
+
+.carousel-item {
+    height: 20vh;
+    border: none;
+}
+
+.btn-outline-secondary,
+.form-control {
+    color: rgb(225, 18, 97);
+}
+
+.footer-content {
+    color: white;
+}
+
+.btn-danger {
+    border: 1px solid black;
+}
+
+.card-background,
+.details-card,
+table {
+    background-image: radial-gradient(circle at 50% -20.71%, #edf3ff 0, #b5c9f2 50%, #79a1e2 100%);
+}
+
+th,
+tr,
+td {
+    border-collapse: collapse;
+    border: solid 1.5px black !important;
+}

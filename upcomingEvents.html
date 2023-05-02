@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/images/Icon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <title>Amazing Events | Upcoming Events</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-black">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./index.html"><img style="width: 10rem;"
+                        src="./assets/images/LogoAmazingEvents.png" alt="logo"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="./index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Upcoming Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pastEvents.html">Past Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="stats.html">Stats</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="carouselExampleCaptions" class="carousel slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://marketplace.canva.com/EAEK4dC2olw/1/0/1600w/canva-arco%C3%ADris-gradiente-rosa-y-naranja-fondo-virtual-para-zoom-c3PYha1JI9M.jpg"
+                        class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1615715874994-bb83092ef331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIwfHx8ZW58MHx8fHw%3D&w=1000&q=80"
+                        class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://marketplace.canva.com/EAEK4rYL-Qk/1/0/1600w/canva-pastel-arte-l%C3%ADquido-tendencia-moderna-fondo-para-zoom-Q6zORw9qrdA.jpg"
+                        class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-caption d-md-block">
+                    <h4>UPCOMING EVENTS</h4>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="vueApp" style="color: white;">
+        {{filter}}
+        <div class="d-flex justify-content-center align-items-center flex-column flex-sm-row gap-1 p-1">
+            <div v-for="category of categories">
+                <input type="checkbox" class="btn-check" :id="category" v-model="checked" :value="category">
+                <label class="btn btn-danger" :for="category">{{ category }}</label>
+            </div>
+        </div>
+        <div class="input-group align-items-center" style="width: 15rem; margin: auto;" id="content-search">
+            <div class="input-group-text" id="btnGroupAddon">🔎</div>
+            <input v-model="searchValue" type="text" class="form-control" id="search-bar" placeholder="example: foklore"
+                aria-label="Input group example" aria-describedby="btnGroupAddon">
+        </div>
+        <div class="d-flex align-items-center justify-content-around flex-wrap p-1 gap-2"
+            style="width: 98vw; margin: auto;">
+            <template v-if="filteredCategories.length > 0" v-for="event of filteredCategories">
+                <div class="card card-background" style="width: 15rem;box-shadow: 10px 5px 5px rgb(51, 19, 127);">
+                    <img style="height: 9rem;" :src="event.image" class="card-img-top" :alt="'img of '+event.name">
+                    <div class="d-flex flex-column justify-content-between card-body" style="height: 15rem">
+                        <h5 class="card-title"> {{ event.name }}</h5>
+                        <p class="card-text"> {{ event.description }}</p>
+                        <div class="d-flex justify-content-around align-items-center">
+                            <p class="m-0">Price: ${{ event.price }}</p>
+                            <a :href="'./details.html?id='+event._id" class="btn btn-danger">More Info</a>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template v-else class="d-flex justify-content-center">
+                <h1>No item matches</h1>
+            </template>
+        </div>
+    </main>
+
+    <footer class="bg-black">
+        <div class="d-flex justify-content-around align-items-center text-align-center">
+            <nav class="navbar bg-black">
+                <div class="container-fluid bg-black">
+                    <a class="navbar-brand" style="color: white;" href="https://www.instagram.com/">
+                        <img src="./assets/images/logoIg.png" alt="logo" width="35" height="35"
+                            class="d-inline-block align-text-top">
+                        Instagram
+                    </a>
+                    <a class="navbar-brand" style="color: white;" href="https://www.facebook.com/">
+                        <img src="./assets/images/logoFb.png" alt="logoFb" width="30" height="30"
+                            class="d-inline-block align-text-top">
+                        Facebook
+                    </a>
+                    <a class="navbar-brand" style="color: white;" href="https://web.whatsapp.com/">
+                        <img src="./assets/images/logoWsp.png" alt="logoWsp" width="30" height="30"
+                            class="d-inline-block align-text-top">
+                        WhatsApp
+                    </a>
+                </div>
+            </nav>
+            <h4 style="margin: 0;">COHORT 44</h4>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="upcomingEvents.js"></script>
+</body>
+
+</html>
